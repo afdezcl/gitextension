@@ -1,9 +1,13 @@
-import './App.css'
-import { Home } from './pages/Home/Home'
+import { Route } from 'wouter'
+import { HomePage } from './pages/Home/HomePage'
+import { SearchResultsPage } from './pages/SearchResults/SearchResultsPage'
 
 function App() {
   return (
-    <Home/>
+    <>      
+      <Route path='/:user/:repo' component={SearchResultsPage} />
+      <Route path='/' component={HomePage} />
+    </>
   )
 }
 
