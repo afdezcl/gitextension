@@ -4,7 +4,7 @@ import { getExtensions } from '../services/getExtension'
 
 export default function useExtensions(user: string, repo: string) {
   const [loading, setLoading] = useState<boolean>(false)
-  const [extensions, setExtensions] = useState<Record<string, number>[]>([])
+  const [extensions, setExtensions] = useState<Record<string, number>>({})
 
   useEffect(() => {
     setLoading(true)

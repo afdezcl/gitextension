@@ -1,6 +1,6 @@
 import { Card } from "../Card/Card"
 
-export const ListOfExtensions = ({ extensions }: { extensions: Record<string, number>[] }) => {
+export const ListOfExtensions = ({ extensions }: { extensions: Record<string, number> }) => {
   return (
     <div className='container mx-auto grid grid-cols-5 gap-4'>
       {
