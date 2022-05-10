@@ -9,17 +9,17 @@ export const SearchResultsPage = ({params}: {params: {user: string, repo: string
   const { loading, extensions } = useExtensions(user, repo)
 
   return (
-    <div className="text-center h-screen bg-gray-100">
+    <div className="text-center h-screen bg-gray-100 overflow-x-hidden">
       <Header />
-      <div className="container mx-auto pt-20 flex flex-wrap justify-center">
+      <div className="pt-20 mx-10 md:mx-40">
         <Search />
-        <div className="pt-20">
+      </div>
+      <div className="py-20 mx-10 md:mx-40">
           { loading
             ? <Spinner />
             : <ListOfExtensions extensions={extensions} />
           }
         </div>
-      </div>
     </div>
   )
 }
