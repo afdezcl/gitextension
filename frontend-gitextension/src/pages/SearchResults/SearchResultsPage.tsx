@@ -6,7 +6,9 @@ import Spinner from "../../components/Spinner/Spinner"
 
 export const SearchResultsPage = ({params}: {params: {user: string, repo: string}}) => {  
   const { user, repo } = params
-  const { loading, extensions } = useExtensions(user, repo)
+  const { loading, extensions, error } = useExtensions(user, repo)
+
+  if (error) return <h1>ERROR</h1>
 
   return (
     <div className="text-center h-screen bg-gray-100 overflow-x-hidden">
@@ -15,11 +17,11 @@ export const SearchResultsPage = ({params}: {params: {user: string, repo: string
         <Search />
       </div>
       <div className="py-20 mx-10 md:mx-40">
-          { loading
-            ? <Spinner />
-            : <ListOfExtensions extensions={extensions} />
-          }
-        </div>
+        { loading
+          ? <Spinner />
+          : <ListOfExtensions extensions={extensions} />
+        }
+      </div>
     </div>
   )
 }
