@@ -10,7 +10,7 @@ const calculateFilesOcurrences = (files: string[]): Record<string, number> => {
   }, {})
 } 
 
-const fromApiResponseToExtensions = (apiResponse: GitHubTreesResponse) => {
+const fromApiResponseToExtensions = (apiResponse: GitHubTreesResponse): Record<string, number> => {
   const files = apiResponse.tree.map((item: GitHubTree) => {
     return item.path
   })
@@ -18,19 +18,19 @@ const fromApiResponseToExtensions = (apiResponse: GitHubTreesResponse) => {
   return extensionsList
 }
 
-export const getExtensions = (user: string, repo: string) => {
+export const getExtensions = (user: string, repo: string): Promise<Record<string, number>> => {
   const API = 'https://api.github.com/repos/'
   
   return fetch(
     `${API}${user}/${repo}/commits`
   )
-    .then((response) => response.json())
+    .then((response: Response) => response.json())
     .then((data: CommitsResponse[]) => {
       const sha = data[0].sha
       return fetch(
         `${API}${user}/${repo}/git/trees/${sha}`
       )
     })
-    .then((response) => response.json())
+    .then((response: Response) => response.json())
     .then(fromApiResponseToExtensions)
 }

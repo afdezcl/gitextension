@@ -3,7 +3,7 @@ import { getExtensions } from '../services/getExtension'
 
 export default function useExtensions(user: string, repo: string): { 
   loading: boolean, 
-  extensions: Record<string, number> | null, 
+  extensions: Record<string, number> | {}, 
   error: boolean 
 } {
   const [loading, setLoading] = useState<boolean>(false)
