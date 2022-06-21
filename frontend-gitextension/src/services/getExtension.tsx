@@ -14,7 +14,4 @@ export const getExtensions = (user: string, repo: string) => {
       )
     })
     .then((response) => response.json())
-    .catch((err) => {
-      console.error("Request failed", err)
-    })
 }
