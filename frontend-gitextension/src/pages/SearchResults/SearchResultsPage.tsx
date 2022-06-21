@@ -8,8 +8,6 @@ export const SearchResultsPage = ({params}: {params: {user: string, repo: string
   const { user, repo } = params
   const { loading, extensions, error } = useExtensions(user, repo)
 
-  if (error) return <h1>ERROR</h1>
-
   return (
     <div className="text-center h-screen bg-gray-100 overflow-x-hidden">
       <Header />
@@ -19,7 +17,7 @@ export const SearchResultsPage = ({params}: {params: {user: string, repo: string
       <div className="py-20 mx-10 md:mx-40">
         { loading
           ? <Spinner />
-          : <ListOfExtensions extensions={extensions} />
+          : <ListOfExtensions extensions={extensions} error={error} />
         }
       </div>
     </div>
